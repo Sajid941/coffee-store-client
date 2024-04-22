@@ -3,10 +3,12 @@ import App from './../App';
 import Home from '../pages/Home';
 import AddCoffee from '../pages/AddCoffee';
 import UpdateCoffee from '../pages/UpdateCoffee';
+import ErrorPage from '../pages/ErrorPage';
 const router = createBrowserRouter([
         {
             path:'/',
             element:<App></App>,
+            errorElement:<ErrorPage></ErrorPage>,
             children:[
                 {
                     path:"/",
