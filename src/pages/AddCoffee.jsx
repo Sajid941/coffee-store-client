@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const AddCoffee = () => {
-    const handleAddCoffee = e =>{
+    const handleAddCoffee = e => {
         e.preventDefault()
         const form = e.target;
         const name = form.name.value;
@@ -10,8 +11,29 @@ const AddCoffee = () => {
         const taste = form.taste.value;
         const category = form.category.value;
         const details = form.details.value;
+        const price = form.price.value;
         const photoUrl = form.photoUrl.value;
-        console.log(name,chef,supplier,taste,category,details,photoUrl);
+        const newCoffee = { name, chef, supplier, taste, category, details,price, photoUrl };
+        fetch('http://localhost:3000/coffees', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newCoffee)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Coffee Added Successfully!',
+                        text: 'Do you want to continue',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    })
+                    form.reset()
+                }
+            })
     }
     return (
         <div className="max-w-7xl mx-auto mt-10">
@@ -60,13 +82,20 @@ const AddCoffee = () => {
                             </label>
                             <input type="text" name="details" placeholder="Enter your coffee Details" className="input input-bordered" required />
                         </div>
-                    </div>
-                    <div className="form-control">
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Price</span>
+                            </label>
+                            <input type="text" name="price" placeholder="Enter your coffee price" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
                         <label className="label">
                             <span className="label-text">Photo url</span>
                         </label>
                         <input type="text" name="photoUrl" placeholder="Enter your coffee Photo url" className="input input-bordered" required />
                     </div>
+                    </div>
+
                     <button className="bg-[#E3B577] btn text-2xl  border-2 border-[#331a15] shadow-xl  ">Add Coffee</button>
                 </form>
 

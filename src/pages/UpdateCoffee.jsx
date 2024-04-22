@@ -10,8 +10,9 @@ const UpdateCoffee = () => {
         const taste = form.taste.value;
         const category = form.category.value;
         const details = form.details.value;
+        const price = form.price.value;
         const photoUrl = form.photoUrl.value;
-        console.log(name, chef, supplier, taste, category, details, photoUrl);
+        console.log(name, chef, supplier, taste, category, details,price, photoUrl);
     }
     return (
         <div className="max-w-7xl mx-auto mt-10">
@@ -60,13 +61,20 @@ const UpdateCoffee = () => {
                             </label>
                             <input type="text" name="details" placeholder="Enter your coffee Details" className="input input-bordered" required />
                         </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Price</span>
+                            </label>
+                            <input type="text" name="price" placeholder="Enter your coffee price" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Photo url</span>
+                            </label>
+                            <input type="text" name="photoUrl" placeholder="Enter your coffee Photo url" className="input input-bordered" required />
+                        </div>
                     </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Photo url</span>
-                        </label>
-                        <input type="text" name="photoUrl" placeholder="Enter your coffee Photo url" className="input input-bordered" required />
-                    </div>
+
                     <button className="bg-[#E3B577] btn text-2xl  border-2 border-[#331a15] shadow-xl  ">Update Coffee Details</button>
                 </form>
 
