@@ -22,7 +22,7 @@ const Coffee = ({ coffee,handleDeleteCoffee }) => {
             </div>
             <div className="space-y-5">
                 <div className="w-10 h-10 bg-[#3C393B] rounded-lg flex justify-center hover:cursor-pointer items-center text-white"><FaEye size={20}></FaEye></div>
-                <Link to={"/updateCoffee"} className="w-10 h-10 bg-[#D2B48C] rounded-lg flex justify-center items-center text-white"><MdEdit size={20}></MdEdit></Link>
+                <Link to={`/updateCoffee/${_id}`} className="w-10 h-10 bg-[#D2B48C] rounded-lg flex justify-center items-center text-white"><MdEdit size={20}></MdEdit></Link>
                 <div onClick={()=>handleDeleteCoffee(_id)} className="w-10 h-10 bg-[#EA4744] rounded-lg flex justify-center items-center text-white hover:cursor-pointer"><MdDelete size={20}></MdDelete></div>
 
             </div>

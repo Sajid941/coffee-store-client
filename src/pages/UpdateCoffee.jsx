@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const UpdateCoffee = () => {
+    const coffee = useLoaderData()
+    console.log(coffee)
+    const {_id,name, chef, supplier, taste, category, details,price, photoUrl}=coffee
     const handleAddCoffee = e => {
         e.preventDefault()
         const form = e.target;
@@ -12,7 +15,19 @@ const UpdateCoffee = () => {
         const details = form.details.value;
         const price = form.price.value;
         const photoUrl = form.photoUrl.value;
-        console.log(name, chef, supplier, taste, category, details,price, photoUrl);
+        const updatedCoffee={name, chef, supplier, taste, category, details,price, photoUrl};
+        console.log(updatedCoffee)
+        fetch(`http://localhost:3000/coffees/${_id}`,{
+            method:"PUT",
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(updatedCoffee)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data);
+        })
     }
     return (
         <div className="max-w-7xl mx-auto mt-10">
@@ -28,50 +43,50 @@ const UpdateCoffee = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" name="name" placeholder="Enter your coffee name" className="input input-bordered" required />
+                            <input type="text" name="name" defaultValue={name} placeholder="Enter your coffee name" className="input input-bordered" required />
                         </div>
 
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Chef</span>
                             </label>
-                            <input type="text" name="chef" placeholder="Enter your coffee Chef" className="input input-bordered" required />
+                            <input type="text" name="chef" defaultValue={chef} placeholder="Enter your coffee Chef" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Supplier</span>
                             </label>
-                            <input type="text" name="supplier" placeholder="Enter your coffee Supplier" className="input input-bordered" required />
+                            <input type="text" name="supplier" defaultValue={supplier} placeholder="Enter your coffee Supplier" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Taste</span>
                             </label>
-                            <input type="text" name="taste" placeholder="Enter your coffee Taste" className="input input-bordered" required />
+                            <input type="text" name="taste" defaultValue={taste} placeholder="Enter your coffee Taste" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Category</span>
                             </label>
-                            <input type="text" name="category" placeholder="Enter your coffee Category" className="input input-bordered" required />
+                            <input type="text" name="category" defaultValue={category} placeholder="Enter your coffee Category" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Details</span>
                             </label>
-                            <input type="text" name="details" placeholder="Enter your coffee Details" className="input input-bordered" required />
+                            <input type="text" name="details" defaultValue={details} placeholder="Enter your coffee Details" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Price</span>
                             </label>
-                            <input type="text" name="price" placeholder="Enter your coffee price" className="input input-bordered" required />
+                            <input type="text" name="price" defaultValue={price} placeholder="Enter your coffee price" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo url</span>
                             </label>
-                            <input type="text" name="photoUrl" placeholder="Enter your coffee Photo url" className="input input-bordered" required />
+                            <input type="text" name="photoUrl" defaultValue={photoUrl} placeholder="Enter your coffee Photo url" className="input input-bordered" required />
                         </div>
                     </div>
 
