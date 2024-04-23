@@ -11,34 +11,34 @@ import PrivateRoute from './PrivateRoute';
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <App></App>,
-        errorElement: <ErrorPage></ErrorPage>,
+        element: <App/>,
+        errorElement: <ErrorPage/>,
         children: [
             {
                 path: "/",
-                element: <Home></Home>,
+                element: <Home/>,
                 loader: () => fetch('http://localhost:3000/coffees')
             },
             {
                 path: "/addCoffee",
-                element: <AddCoffee></AddCoffee>
+                element: <AddCoffee/>
             },
             {
                 path: "/updateCoffee/:id",
-                element: <UpdateCoffee></UpdateCoffee>,
+                element: <UpdateCoffee/>,
                 loader: ({ params }) => fetch(`http://localhost:3000/coffees/${params.id}`)
             },
             {
                 path: '/register',
-                element: <Register></Register>
+                element: <Register/>
             },
             {
                 path: '/login',
-                element: <Login></Login>
+                element: <Login/>
             },
             {
                 path: '/usersTable',
-                element: <PrivateRoute><UsersTable></UsersTable></PrivateRoute>,
+                element: <PrivateRoute><UsersTable/></PrivateRoute>,
                 loader: () => fetch('http://localhost:3000/users')
             }
         ]
