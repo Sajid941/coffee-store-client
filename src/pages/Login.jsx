@@ -16,12 +16,24 @@ const Login = () => {
         logIn(email, password)
             .then(result => {
                 console.log(result.user)
+                const user ={email,lastSignInTime:result.user.metadata.lastSignInTime}
                 navigate(location.state? location.state : '/')
                 Swal.fire({
                     title: "Log in successfully",
                     text: "You clicked the button!",
                     icon: "success"
                   });
+                fetch('http://localhost:3000/users',{
+                    method:"PATCH",
+                    headers:{
+                        'content-type':'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                })
             })
             .catch(error => {                
                 Swal.fire({
