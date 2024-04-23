@@ -1,3 +1,4 @@
+
 const Banner = () => {
     return (
         <div className="bg-[url('https://i.postimg.cc/s20kYwfQ/Rectangle-2.png')] bg-no-repeat bg-cover py-20 px-10 md:py-72 md:px-48">
