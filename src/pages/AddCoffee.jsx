@@ -14,7 +14,7 @@ const AddCoffee = () => {
         const price = form.price.value;
         const photoUrl = form.photoUrl.value;
         const newCoffee = { name, chef, supplier, taste, category, details,price, photoUrl };
-        fetch('http://localhost:3000/coffees', {
+        fetch('https://coffee-store-server-rho-bice.vercel.app/coffees', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

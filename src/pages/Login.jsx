@@ -23,7 +23,7 @@ const Login = () => {
                     text: "You clicked the button!",
                     icon: "success"
                   });
-                fetch('http://localhost:3000/users',{
+                fetch('https://coffee-store-server-rho-bice.vercel.app/users',{
                     method:"PATCH",
                     headers:{
                         'content-type':'application/json'

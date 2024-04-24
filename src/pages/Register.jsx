@@ -21,7 +21,7 @@ const Register = () => {
               form.reset()
             const createdAt = result.user?.metadata?.creationTime
             const user = {email,createdAt:createdAt}
-            fetch('http://localhost:3000/users',{
+            fetch('https://coffee-store-server-rho-bice.vercel.app/users',{
                 method:"POST",
                 headers:{
                     'content-type':'application/json'
